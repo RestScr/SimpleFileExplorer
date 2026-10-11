@@ -429,3 +429,4 @@ FodyWeavers.xsd
 
 # User catalogs
 /logs/
+/localdir/
