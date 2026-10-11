@@ -69,7 +69,7 @@ function commandExists(commandName)
 {
     for (command of commands)
     {
-        if (commands[commnd][aliases].includes(commandName))
+        if (commands[command][aliases].includes(commandName))
         {
 
         }
