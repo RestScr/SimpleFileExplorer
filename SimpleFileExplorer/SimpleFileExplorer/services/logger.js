@@ -21,15 +21,14 @@ const logger = pino(
         [
             {
                 level: "info",
-                stream: destinations[info]
+                stream: destinations["info"]
             },
             {
                 level: "error",
-                stream: destinations[error]
+                stream: destinations["error"]
             }
         ]
     )
 )
-
 
 module.exports = logger
