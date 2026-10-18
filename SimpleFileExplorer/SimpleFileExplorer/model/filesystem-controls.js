@@ -213,8 +213,30 @@ class FilesystemControls
         {
             directoryContents = fs.readdirSync(path.join(localFilesystem, this.localDirectory))
             this.printDirectoryContents(directoryContents)
+            dir = "."
         }
-        return directoryContents
+
+        let basename = path.join(this.localDirectory, dir)
+        let directoryContentsWithTypes = []
+        for (let file of directoryContents)
+        {
+            let fileType = ""
+            if (fs.statSync(path.join(localFilesystem, this.localDirectory, path.join(basename, file))).isDirectory()) {
+                fileType = "DIR"
+            }
+            else {
+                fileType = "FILE"
+            }
+
+            let extension = path.extname(file)
+            directoryContentsWithTypes.push({
+                name: path.join(basename, file),
+                type: fileType,
+                extension: extension
+            })
+        }
+
+        return directoryContentsWithTypes
     }
 
 
