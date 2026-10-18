@@ -3,7 +3,6 @@ const { FilesystemControls, readline } = require("./filesystem-controls.js");
 const commands = require("./commands.js");
 
 const filesystemControls = new FilesystemControls();
-exports.filesystemControls = filesystemControls;
 
 
 function processInput(input) {
@@ -14,6 +13,8 @@ function processInput(input) {
         readline.prompt();
         return;
     }
+    let status = 200;
+
     splittedInputWithStrings = input.split("\"").filter(item => item.trim() != "");
     splittedInput = splittedInputWithStrings[0].split(" ");
 
@@ -45,6 +46,7 @@ function processInput(input) {
         {
             console.log(`Invalid amount of arguments. Path is needed`);
             logger.info(`User received message: "Invalid amount of arguments. Path is needed"`);
+            status = 400;
         }
     }
     else if (commands["changeDirectoryCommand"]["aliases"].includes(command))
@@ -58,6 +60,7 @@ function processInput(input) {
         {
             console.log(`Invalid amount of arguments. Path is needed`);
             logger.info(`User received message: "Invalid amount of arguments. Path is needed"`);
+            status = 400;
         }
     }
     else if (commands["clearConsoleCommand"]["aliases"].includes(command))
@@ -79,6 +82,7 @@ function processInput(input) {
         {
             console.log(`Invalid amount of arguments. Path is needed`);
             logger.info(`User received message: "Invalid amount of arguments. Path is needed"`);
+            status = 400;
         }
     }
     else if (commands["listDirectoryCommand"]["aliases"].includes(command))
@@ -104,6 +108,7 @@ function processInput(input) {
         {
             console.log(`Invalid amount of arguments. Path is needed`);
             logger.info(`User received message: "Invalid amount of arguments. Path is needed"`);
+            status = 400;
         }
     }
     else if (commands["removeDirectoryCommand"]["aliases"].includes(command))
@@ -116,6 +121,7 @@ function processInput(input) {
         {
             console.log(`Invalid amount of arguments. Path is needed`);
             logger.info(`User received message: "Invalid amount of arguments. Path is needed"`);
+            status = 400;
         }
     }
     else if (commands["moveFileCommand"]["aliases"].includes(command))
@@ -129,16 +135,19 @@ function processInput(input) {
         {
             console.log(`Invalid amount of arguments. Path is needed`);
             logger.info(`User received message: "Invalid amount of arguments. Path is needed"`);
+            status = 400;
         }
     }
     else
     {
         logger.info(`User entered unknown command: ${command}`);
         console.log(`Unknown command: ${command}. Type 'help' to get a list of available commands`);
+        status = 400;
     }
 
     readline.setPrompt(`${filesystemControls.getCurrentDirectory(false)} > `);
     readline.prompt();
+    return status;
 }
 
 function start()
@@ -152,7 +161,9 @@ function start()
 }
 
 commandLine = {
-    listen: start
+    listen: start,
+    processInput: processInput,
+    filesystemControls: filesystemControls
 }
 
 module.exports = commandLine
