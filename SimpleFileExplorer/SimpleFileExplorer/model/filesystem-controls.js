@@ -216,6 +216,7 @@ class FilesystemControls
             dir = "."
         }
 
+        // —бор списка файлов в JSON
         let basename = path.join(this.localDirectory, dir)
         let directoryContentsWithTypes = []
         for (let file of directoryContents)

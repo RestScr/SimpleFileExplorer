@@ -69,7 +69,7 @@ function processInput(input) {
     }
     else if (commands["getCurrentDirectoryCommand"]["aliases"].includes(command))
     {
-        filesystemControls.getCurrentDirectory();
+        return filesystemControls.getCurrentDirectory();
     }
     else if (commands["createFileCommand"]["aliases"].includes(command))
     {
@@ -89,12 +89,12 @@ function processInput(input) {
     {
         if (splittedInput.length > 1)
         {
-            filesystemControls.listDirectory(splittedInput.at(-1));
+            return filesystemControls.listDirectory(splittedInput.at(-1));
         }
 
         else
         {
-            filesystemControls.listDirectory();
+            return filesystemControls.listDirectory();
         }
     }
     else if (commands["deleteFileCommand"]["aliases"].includes(command))

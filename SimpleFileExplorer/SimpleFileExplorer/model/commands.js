@@ -23,7 +23,7 @@ const commands = {
     },
 
     listDirectoryCommand: {
-        aliases: ["ls", "list"],
+        aliases: ["ls", "listdir"],
         description: "Get a list of files and catalogs of a current directory",
         usage: "ls",
         params: {}
