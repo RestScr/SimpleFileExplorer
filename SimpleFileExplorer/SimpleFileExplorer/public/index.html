@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Проводник</title>
+        <meta charset="UTF-8" />
+        <script src="js/script.js" charset="UTF-8" type="module"></script>
+        <link rel="stylesheet" ref="css/style.css" />
+    </head>
+    <body>
+        <!-- Сам проводник -->
+        <table id="explorer">
+            
+        </table>
+
+        <!-- Панель кнопок -->
+        <div id="buttonPanel">
+            <div id="createDirectoryPanel">
+                <input type="text"
+                       id="directoryNameInput"
+                       placeholder="Введите название директории" />
+                <button 
+                        id="createDirectoryButton">
+                    Создать каталог
+                </button>
+            </div>
+
+            <div id="addFilePanel">
+                <input type="text"
+                       id="fileNameInput"
+                       placeholder="Введите название файла" />
+                <button 
+                        id="addFileButton">
+                    Создать файл
+                </button>
+            </div>
+            
+            <div id="moveFilePanel">
+                <input type="text"
+                       id="moveFileNameInput"
+                       placeholder="Введите название перемещаемого файла" />
+                <input type="text"
+                       id="newFileNameInput"
+                       placeholder="Введите новое расположение файла" />
+                <button 
+                        id="moveFileButton">
+                    Переместить файл
+                </button>
+            </div>
+
+            <div id="deleteFilePanel">
+                <input type="text"
+                       id="deleteFileNameInput"
+                       placeholder="Введите название удаляемого файла" />
+                <button 
+                        id="deleteFileButton">
+                    Удалить файл
+                </button>
+            </div>
+            
+        </div>
+    </body>
+</html>
